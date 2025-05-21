@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galeri Foto Kegiatan</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(BG.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #f0f0f0;
+  padding-top: 75px; /* hanya untuk main navbar fixed */
+  margin: 0;
+    }
+
+    /* Main Navbar */
+    .main-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      background-color: rgba(7, 7, 7, 0.9);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    .main-navbar .navbar-logo {
+      height: 40px;
+      margin-right: 15px;
+      vertical-align: middle;
+    }
+    .main-navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    .main-navbar ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    .main-navbar ul li a:hover,
+    .main-navbar ul li a:focus {
+      color: #ff7200;
+      outline: none;
+    }
+
+    /* Gallery Navbar */
+    .gallery-navbar {
+  position: sticky;
+  top: calc(75px + 60px); /* 75px navbar utama + 60px tinggi heading */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  /* background-color: rgba(7, 7, 7, 0.8); */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 20px;
+  border-radius: 0 0 8px 8px;
+  user-select: none;
+  z-index: 999;
+    }
+    .gallery-navbar button {
+      background: transparent;
+      border: 2px solid #f0f0f0;
+      color: #f0f0f0;
+      padding: 8px 16px;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .gallery-navbar button:hover,
+    .gallery-navbar button.active {
+      background-color: #f0f0f0;
+      color: #2c3e50;
+      border-color: #f0f0f0;
+    }
+
+    /* Heading */
+    h1 {
+      position: sticky;
+  top: 75px; /* tepat di bawah main navbar */
+  /* background-color: rgba(7, 7, 7, 0.8); */
+  padding: 15px 20px;
+  margin: 0 auto 10px auto;
+  max-width: 1200px;
+  text-align: center;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  z-index: 998; /* di bawah navbar utama dan navbar galeri */
+  border-radius: 0 0 8px 8px;
+    }
+
+    /* Gallery Container */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 50px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .gallery-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      display: block;
+    }
+    .gallery-container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Lightbox Overlay */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .lightbox-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+    .lightbox-overlay .close-btn {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .lightbox-overlay .close-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .gallery-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .main-navbar ul {
+        gap: 20px;
+      }
+    }
+    .icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh; 
+}
+
+.logo{
+    width: 180Px;
+    height: 200px;
+    position: absolute
+    top: 50%;
+    transform:translatey(-35%)
+}
+  </style>
+</head>
+<body>
+  <!-- Main Navbar -->
+  <nav class="main-navbar" role="navigation" aria-label="Main Navigation">
+    <div class="icon">
+      <img src="3.png" alt="logo best" class="logo best" />
+    </div>
+    <ul>
+      <li><a href="Home.html">HOME</a></li>
+      <li><a href="profile scroll.html">PROFILE</a></li>
+      <li><a href="Activities.html">ACTIVITIES</a></li>
+      <li><a href="Galery.html">GALERY</a></li>
+      <li><a href="Contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Heading: Galeri Foto Kegiatan -->
+  <h1>GALERY PHOTO ATHLET</h1>
+
+  <!-- Gallery Navbar -->
+  <nav class="gallery-navbar" role="navigation" aria-label="Kategori Galeri">
+    <button class="active" data-filter="all">All Photo</button>
+    <button data-filter="pemula">Pemula</button>
+    <button data-filter="standar">Standar</button>
+    <button data-filter="speed">Speed</button>
+  </nav>
+
+  <!-- <h1>Galeri Foto Kegiatan</h1> -->
+
+  <div class="gallery-container">
+    <img src="1.jpg" alt="Foto 1" data-category="pemula" />
+    <img src="2.png" alt="Foto 2" data-category="standar" />
+    <img src="3.png" alt="Foto 3" data-category="speed" />
+    <img src="4.jpg" alt="Foto 4" data-category="pemula" />
+    <img src="5.jpg" alt="Foto 5" data-category="standar" />
+    <img src="6.png" alt="Foto 6" data-category="speed" />
+    <img src="7.jpg" alt="Foto 7" data-category="pemula" />
+    <img src="8.jpg" alt="Foto 8" data-category="standar" />
+    <img src="9.PNG" alt="Foto 9" data-category="speed" />
+    <img src="10.png" alt="Foto 10" data-category="pemula"/>
+    <img src="11.jpg" alt="Foto 11" data-category="standar" />
+    <img src="12.png" alt="Foto 12" data-category="speed" />
+    <img src="13.jpg" alt="Foto 13" data-category="pemula" />
+    <img src="14.jpg" alt="Foto 14" data-category="standar" />
+    <img src="15.png" alt="Foto 15" data-category="speed" />
+    <img src="16.jpg" alt="Foto 16" data-category="pemula" />
+    <img src="17.jpg" alt="Foto 17" data-category="standar" />
+    <img src="18.jpg" alt="Foto 18" data-category="speed" />
+    <img src="19.jpg" alt="Foto 19" data-category="pemula" />
+    <img src="20.jpg" alt="Foto 20" data-category="standar" />
+    <img src="21.png" alt="Foto 21" data-category="speed" />
+    <img src="22.jpg" alt="Foto 22" data-category="pemula" />
+    <img src="23.jpg" alt="Foto 23" data-category="standar" />
+    <img src="24.jpg" alt="Foto 24" data-category="speed" />
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-img">
+    <span class="close-btn" id="lightbox-close" aria-label="Tutup">&times;</span>
+    <img src="" alt="Gambar Besar" id="lightbox-img" />
+  </div>
+
+  <script>
+    // Lightbox functionality
+    const galleryImages = document.querySelectorAll('.gallery-container img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+      document.body.style.overflow = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightboxClose.click();
+      }
+    });
+
+    // Filter gallery by category
+    const filterButtons = document.querySelectorAll('.gallery-navbar button');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        galleryImages.forEach(img => {
+          if (filter === 'all' || img.getAttribute('data-category') === filter) {
+            img.style.display = 'block';
+          } else {
+            img.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

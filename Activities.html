@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Activities - Klub Sepatu Roda</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+/* SETTING BACKGROUND */
+.main{
+    width: %;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(bg.jpg.);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+/* SETTING HALAMAN WEB */
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh; 
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+    position: absolute
+    top: 50%;
+    transform:translatey(-35%)
+}
+/* SETTING MENU NAVBAR */
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 27px;
+    font-size: 15px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #ff7200;
+}
+
+.btn:hover{
+    color: #000;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #fff;
+    position: relative;
+}
+        /* Style khusus untuk halaman Activities agar tidak mengganggu navbar */
+
+        .activities-container {
+            max-width: 1200px;
+            margin: 40px auto 60px auto;
+            padding: 0 20px;
+            font-family: Arial, sans-serif;
+            color: #222;
+        }
+
+        .activities-container h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.8rem;
+            color: #ff7200;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Grid layout untuk media items */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .media-item {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+        .media-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .media-item video,
+        .media-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .media-content {
+            padding: 15px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-content h3 {
+            margin: 0 0 10px 0;
+            color: #ff7200;
+            font-size: 1.4rem;
+        }
+
+        .media-content p {
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .activities-container {
+                margin: 20px 10px 40px 10px;
+            }
+            .activities-container h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!-- Navbar (kode persis seperti yang Anda berikan) -->
+        <div class="navbar">
+            <div class="icon">
+                <img src="3.png" alt="logo best" class="logo best" />
+            </div>
+
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="Home.html">HOME</a></li>
+                        <li><a href="profile scroll.html">PROFILE</a></li>
+                        <li><a href="Activities.html">ACTIVITIES</a></li>
+                        <li><a href="Galery.html">GALERY</a></li>
+                        <li><a href="Contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Konten utama halaman Activities -->
+        <section class="activities-container" aria-label="Kegiatan Klub Sepatu Roda">
+            <h1>Kegiatan Klub Sepatu Roda</h1>
+
+            <div class="media-grid">
+
+                <!-- Contoh item video -->
+                <article class="media-item">
+                    <video controls preload="metadata" poster="video-poster1.jpg" aria-label="Video latihan sepatu roda">
+                        <source src="v1.mp4" type="video/mp4" />
+                        Browser Anda tidak mendukung video tag.
+                    </video>
+                    <div class="media-content">
+                        <h3>Latihan Mingguan</h3>
+                        <p>Video ini menampilkan sesi latihan mingguan klub sepatu roda kami, fokus pada teknik dasar dan kelincahan.</p>
+                    </div>
+                </article>
+
+                <!-- Contoh item foto -->
+                <article class="media-item">
+                    <img src="event-kompetisi.jpg" alt="Foto kompetisi sepatu roda" />
+                    <div class="media-content">
+                        <h3>Kompetisi Antar Klub</h3>
+                        <p>Foto ini diambil saat kompetisi antar klub sepatu roda yang diadakan di kota kami, menampilkan semangat dan sportivitas anggota.</p>
+                    </div>
+                </article>
+
+                <!-- Contoh item video lain -->
+                <article class="media-item">
+                    <video controls preload="metadata" poster="video-poster2.jpg" aria-label="Video trik sepatu roda">
+                      <source src="v1.mp4" type="video/mp4" />
+                        Browser Anda tidak mendukung video tag.
+                    </video>
+                    <div class="media-content">
+                        <h3>Trik dan Freestyle</h3>
+                        <p>Video ini memperlihatkan beberapa trik freestyle yang dipelajari oleh anggota klub untuk meningkatkan kemampuan dan kreativitas.</p>
+                    </div>
+                </article>
+
+                <!-- Contoh item foto lain -->
+                <article class="media-item">
+                    <img src="outing-klub.jpg" alt="Foto outing klub sepatu roda" />
+                    <div class="media-content">
+                        <h3>Outing dan Gathering</h3>
+                        <p>Foto kegiatan outing dan gathering klub yang mempererat tali persaudaraan antar anggota di luar sesi latihan.</p>
+                    </div>
+                </article>
+
+                <!-- Tambahkan item media lain sesuai kebutuhan -->
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

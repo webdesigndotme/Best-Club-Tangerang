@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile Page</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+/* SETTING BACKGROUND */
+.main{
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)100%), url(bg.jpg.);
+    background-position: center;
+    background-size: cover;
+    height: 175vh;
+}
+/* SETTING HALAMAN WEB */
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: 10px;
+}
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh; 
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+    position: absolute
+    top: 50%;
+    transform:translatey(-35%)
+}
+
+/* SETTING MENU NAVBAR */
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 27px;
+    font-size: 15px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #ff7200;
+}
+
+.btn:hover{
+    color: #000;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #fff;
+    position: relative;
+}
+        /* ===== Style untuk bagian profile, tanpa mengubah navbar ===== */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Profil container */
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        /* Foto profil */
+        .profile-photo {
+            flex: 1 1 250px;
+            max-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .profile-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .profile-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Info profil */
+        .profile-info {
+            flex: 2 1 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .profile-info h2 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .profile-info h3 {
+            font-weight: normal;
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .profile-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Social media / contact info */
+        .profile-contact {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .profile-contact a {
+            text-decoration: none;
+            color: #ff7200;
+            font-weight: 600;
+            border: 2px solid #ff7200;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .profile-contact a:hover {
+            background-color: #ff7200;
+            color: white;
+        }
+
+        /* Container untuk para pelatih */
+        .coaches-container {
+            margin-top: 60px;
+            background: white;
+            padding: 30px 30px 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .coaches-container h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            color: #222;
+            margin-bottom: 40px;
+        }
+
+        /* Grid untuk profil pelatih */
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .coach-profile {
+            background: #fafafa;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .coach-profile:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .coach-photo {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .coach-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .coach-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .coach-info {
+            padding: 15px 20px;
+        }
+        .coach-info h3 {
+            margin: 15px 0 8px 0;
+            font-size: 1.4rem;
+            color: #ff7200;
+        }
+        .coach-info p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.4;
+            margin: 0 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-info {
+                text-align: center;
+            }
+            .profile-contact {
+                justify-content: center;
+            }
+        }
+        .organization-structure {
+    margin-top: 60px;
+    background: white;
+    padding: 30px 40px 40px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.organization-structure h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+.organization-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 kolom */
+    gap: 30px;
+}
+
+.org-member {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 12px; /* sedikit dikurangi agar muat */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.org-member:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.org-member img {
+    width: 100%;
+    height: auto;
+    max-height: 140px; /* dikurangi supaya proporsional di kolom yang lebih sempit */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.org-member h3 {
+    font-size: 1.2rem; /* sedikit diperkecil agar pas */
+    color: #ff7200;
+    margin-top: 0;
+}
+
+/* Scroll to top button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #ff7200;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!-- Navbar (kode persis seperti yang Anda berikan) -->
+        <div class="navbar">
+            <div class="icon">
+                <img src="3.png" alt="logo best" class="logo best" />
+            </div>
+
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="Home.html">HOME</a></li>
+                        <li><a href="profile scroll.html">PROFILE</a></li>
+                        <li><a href="Activities.html">ACTIVITIES</a></li>
+                        <li><a href="Galery.html">GALERY</a></li>
+                        <li><a href="Contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Konten Profil Klub -->
+        <section class="profile-container" aria-label="Profil Pengguna">
+            <div class="profile-photo">
+                <img src="3.png" alt="Foto Profil Klub" />
+            </div>
+            <div class="profile-info">
+                <h2>BEST CLUB TANGERANG</h2>
+                <h3>Botanical Entertain Skate Tangerang</h3>
+                <p>
+                    BEST Club adalah klub sepatu roda yang didirikan pada tahun 2021 dengan visi untuk mengembangkan olahraga sepatu roda dan menciptakan generasi muda yang aktif, sehat,dan berprestasi. Klub ini beroperasi di wilayah Tangerang dan sekitarnya, meliputi Kabupaten Tangerang, Tangerang Selatan, hingga Kota Tangerang. Dengan cakupan wilayah yang luas,BEST Club telah menjadi salah satu komunitas sepatu roda terbesar dan paling berkembang di kawasan tersebut, yang juga memiliki anggota dari berbagai kalangan usia.
+                </p>
+                <!-- <p> -->
+                    <!-- Keahlian saya meliputi HTML, CSS, JavaScript, React, dan pengembangan backend menggunakan Node.js. Saya juga berpengalaman dalam optimasi SEO dan pengelolaan konten. -->
+                <!-- </p> -->
+                <div class="profile-contact">
+                    <a href="mailto:email@domain.com" aria-label="Email">Email</a>
+                    <a href="https://linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profil Pelatih Klub Sepatu Roda -->
+        <section class="coaches-container" aria-label="Profil Pelatih Klub Sepatu Roda">
+            <h2>Pelatih Klub Sepatu Roda</h2>
+            <div class="coaches-grid">
+
+                <article class="coach-profile">
+                    <div class="coach-photo">
+                        <img src="ade.jpg" alt="Foto Pelatih Andi" />
+                    </div>
+                    <div class="coach-info">
+                        <h3>Ade Solihin</h3>
+                        <p>Pelatih teknik dasar dan keselamatan, memastikan anggota berlatih dengan aman dan benar.</p>
+                        <!-- <p>Pelatih utama dengan pengalaman 10 tahun di dunia sepatu roda dan teknik freestyle.</p> -->
+                    </div>
+                </article>
+
+                <article class="coach-profile">
+                    <div class="coach-photo">
+                        <img src="avi2.jpeg" alt="Foto Pelatih Avi" />
+                    </div>
+                    <div class="coach-info">
+                        <h3>Afifah Nurul Syahidah</h3>
+                        <p>Pelatih dengan background atlet yang telah mengikuti beberapa kejuaran tingkat kota dan provinsi</p>
+                    </div>
+                </article>
+
+                <article class="coach-profile">
+                    <div class="coach-photo">
+                        <img src="16.jpg" alt="Foto Pelatih Andi" />
+                    </div>
+                    <div class="coach-info">
+                        <h3>Hendra Gunawan</h3>
+                        <p>Spesialis kecepatan dan teknik balap, membantu anggota meningkatkan performa lomba dan dengan pengalaman lebih dari 10 tahun.</p>
+                        <!-- <p>Pelatih teknik dasar dan keselamatan, memastikan anggota berlatih dengan aman dan benar.</p> -->
+                    </div>
+                </article>
+
+                <article class="coach-profile">
+                    <div class="coach-photo">
+                        <img src="16.jpg" alt="Foto Pelatih Andi" />
+                    </div>
+                    <div class="coach-info">
+                        <h3>Vacant</h3>
+                        <p>uknown</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        <!-- Profil struktur Klub Sepatu Roda -->
+         <section class="organization-structure" aria-label="Struktur Organisasi Klub Sepatu Roda">
+    <h2>Struktur Organisasi</h2>
+    <div class="organization-grid">
+        <!-- Contoh 15 item (5 baris x 3 kolom) -->
+        <article class="org-member">
+            <img src="12.png" alt="Foto Ketua Klub" />
+            <h3>Pembina</h3>
+            <h5>Hj. Zainab Umiani, SE</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg" alt="Foto Wakil Ketua" />
+            <h3>Ketua</h3>
+            <h5>Drg. Dhita Hanedyawuri</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Sekretaris" />
+            <h3>Wakil Ketua</h3>
+            <h5>Abdeni Rizma</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Bendahara" />
+            <h3>Sekretaris</h3>
+            <h5>Fanny Permadi</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Koordinator Pelatih" />
+            <h3>Bendahara 1</h3>
+            <h5>Desi Tikalina</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 1" />
+            <h3>Bendahara 2</h3>
+            <h5>Risma Dewi</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 2" />
+            <h3>Humas</h3>
+            <h5>Efita Asta Adhitya</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 3" />
+            <h3>Anggota 3</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 4" />
+            <h3>Anggota 4</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 5" />
+            <h3>Anggota 5</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 6" />
+            <h3>Anggota 6</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 7" />
+            <h3>Anggota 7</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 8" />
+            <h3>Anggota 8</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 9" />
+            <h3>Anggota 9</h3>
+            <h5>Fulan</h5>
+        </article>
+        <article class="org-member">
+            <img src="1.jpg"  alt="Foto Anggota 10" />
+            <h3>Anggota 10</h3>
+            <h5>Fulan</h5>
+        </article>
+    </div>
+</section>
+
+    </div>
+
+    <button id="scroll-to-top" title="Gulir ke Atas">&#x25B2;</button>
+
+    <script>
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        window.onscroll = function() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopButton.style.display = 'block';
+          } else {
+            scrollToTopButton.style.display = 'none';
+          }
+        };
+        scrollToTopButton.onclick = function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>

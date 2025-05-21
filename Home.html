@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Page - Klub Sepatu Roda</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden; /* Hilangkan scroll halaman utama */
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(bg.jpg.);
+      color: #fff;
+    }
+
+    /* Container utama dengan flexbox */
+    .main {
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* Penuh tinggi viewport */
+    }
+
+    /* Navbar dengan tinggi tetap */
+    .main-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 45px;
+      background-color: rgba(7, 7, 7, 0.9);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    .main-navbar .navbar-logo {
+      height: 40px;
+      margin-right: 15px;
+      vertical-align: middle;
+    }
+    .main-navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    .main-navbar ul li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    .main-navbar ul li a:hover,
+    .main-navbar ul li a:focus {
+      color: #ff7200;
+      outline: none;
+    }
+    /* Konten utama mengisi ruang tersisa */
+    .content {
+      flex: 1 1 auto;
+      overflow-y: auto; /* Scroll hanya di sini jika konten panjang */
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    /* Teks di kiri */
+    .hero-text {
+      flex: 1 1 50%;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+    .hero-text span {
+      color: #ff7200;
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+      max-width: 500px;
+    }
+    .hero-text button {
+      background: #ff7200;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .hero-text button:hover {
+      background: #e05a00;
+    }
+
+    /* Social logos below button */
+    .social-logos {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      font-size: 1.5rem;
+    }
+    .social-logos a {
+      color: #fff;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-logos a:hover {
+      color: #ff7200;
+    }
+    
+    /* Foto atlet transparan di kanan */
+    .hero-image {
+      flex: 1 1 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      opacity: 0.85;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Footer dengan tinggi tetap */
+    .footer {
+      background: linear-gradient(135deg, #141516, #2a5298);
+      padding: 25px 40px;
+      flex: 0 0 120px; /* tinggi footer 120px */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+      width: 100%;
+      height: 40px;
+    }
+    .footer div {
+      max-width: 25%;
+      min-width: 200px;
+    }
+    .footer h4 {
+      color: #ff7200;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .footer p, .footer a {
+      color: #ccc;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .footer a:hover {
+      color: #ff7200;
+    }
+
+    /* Responsive untuk layar kecil */
+    @media (max-width: 900px) {
+      .content {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .hero-text, .hero-image {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      .hero-image img {
+        max-height: 250px;
+      }
+      .footer {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+      }
+      .footer div {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <!-- Navbar -->
+    <nav class="main-navbar">
+      <ul>
+          <li><a href="Home.html">HOME</a></li>
+          <li><a href="profile scroll.html">PROFILE</a></li>
+          <li><a href="Activities.html">ACTIVITIES</a></li>
+          <li><a href="Galery.html">GALERY</a></li>
+          <li><a href="Contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+    <!-- Konten utama -->
+    <div class="content">
+      <div class="hero-text">
+        <h1>BEST CLUB TANGERANG<br><span>BOTANICAL ENTERTAIN SKATE TANGERANG</span></h1>
+        <p>
+          Merupakan klub sepatu roda yang berdiri sejak tahun 2021. Klub ini meliputi daerah Kabupaten Tangerang, Tangerang Selatan hingga Tangerang Kota. Saat ini anggota dari BEST Club Inline Skate mencapai lebih dari 50 atlet dengan rentang usia 4-15 tahun.
+        </p>
+        <button>JOIN US</button>
+        <a href="https://youtube.com" class="btn"></a>
+        <div class="social-logos">
+          <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener">
+            <ion-icon name="logo-youtube"></ion-icon>
+          </a>
+          <a href="https://www.instagram.com/bestclub.inline/" aria-label="Instagram" target="_blank" rel="noopener">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+          <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+          <a href="https://wa.me/62812-81690899" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="3.png" alt="Foto Atlet Sepatu Roda" />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>
+        <h4>Alamat</h4>
+        <p>Track Sepatu Roda Botanical Park BSD City, Kabupaten Tangerang, Banten 15345</p>
+      </div>
+      <div>
+        <h4>Jadwal Latihan</h4>
+        <p>Kamis & Saptu : 15.00 - 17.30 WIB</p>
+        <p>Minggu        : 06.00 - 09.00 WIB</p>
+      </div>
+      <div>
+        <h4>Venue Latihan</h4>
+        <p>Botanical Park Inline Skate Trek, BSD City.</p>
+        <p>Mozia Bicycle Trek, BSD City.</p>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <p>Telp: +62 812-8169-0899 - Desy</p>
+        <p>Info: info@bestclubtangerang.com</p>
+        <p>Website: www.bestclubtangerang.com</p>
+      </div>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script>
+    const joinButton = Array.from(document.querySelectorAll('button'))
+      .find(btn => btn.textContent.trim() === 'JOIN US');
+
+    if (joinButton) {
+      joinButton.addEventListener('click', () => {
+        window.location.href = "https://docs.google.com/forms/d/1jhGytG19ggyxLoPsAVknvjKhhvVbBoUu8kF_XoDIug8/edit?usp=drivesdk/"; // Ganti sesuai halaman tujuan
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
